@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebsSockets</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="chatControls">
+    <input id="message" placeholder="Type your message">
+    <button id="enter">Send</button>
+</div>
+
+
+
+<ul id="userlist">
+    Users
+    <div id="userlist-items"></div>
+
+    Your channel is:
+    <div id="channel-items"></div>
+
+
+
+</ul>
+
+
+<ul id="chatlist">
+    Channels
+    <div id="chatlist-items"></div>
+
+
+
+    <div id="addChannel">
+        <input id="add" placeholder="Type chanel name">
+        <button id="accept">Create new room</button>
+        <button id="chatbox">Chatbox</button>
+        <button id ="leave">Exit the room</button>
+    </div>
+
+
+</ul>
+<div id="chat">    <!-- Built by JS --> </div>
+
+<p>
+
+
+</body>
+</html>
+<script src="websocketDemo.js"></script>
