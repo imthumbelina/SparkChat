@@ -19,12 +19,15 @@ import static spark.Spark.*;
  */
 public class Chat {
 
-    static Map<Session, String> userUsernameMap = new ConcurrentHashMap<>();
-    static Map<String,Boolean> chatNamesMap = new ConcurrentHashMap<>();
-    static {
-        chatNamesMap.put("main", true);
-    }
+    public Map<Session, String> userUsernameMap;
+    public Map<String,Boolean> chatNamesMap;
 
+
+   public Chat(){
+        this.userUsernameMap = new ConcurrentHashMap<>();
+        this.chatNamesMap = new ConcurrentHashMap<>();
+        this.chatNamesMap.put("main", true);
+    }
 
     public static void main(String[] args){
         staticFileLocation("/public");
@@ -37,7 +40,7 @@ public class Chat {
 
 
     //Sends a message from one user to all users, along with a list of current usernames
-    public static void broadcastMessage(String sender, String message,String chatName) {
+    public  void broadcastMessage(String sender, String message,String chatName) {
         userUsernameMap.keySet().stream().filter(Session::isOpen).forEach(session -> {
             try {
                 session.getRemote().sendString(String.valueOf(new JSONObject()
@@ -53,7 +56,7 @@ public class Chat {
     }
 
     //Builds a HTML element with a sender-name, a message, and a timestamp,
-    private static String createHtmlMessageFromSender(String sender, String message) {
+    private  String createHtmlMessageFromSender(String sender, String message) {
         if(message!=null) {
             return article().with(
                     b(sender + " says:"),
